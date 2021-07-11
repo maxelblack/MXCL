@@ -1,0 +1,7 @@
+language = en
+mxcl/ui.main.title = MX Craft Launcher
+mxcl/ui.default.dialog-title = Message
+mxcl/ui.default.dialog-text = This is a message.
+mxcl/ui.main.button.launch = LAUNCH GAME
+mxcl/ui.main.button.menu = Menu
+mxcl/ui.main.button.download = Downloads

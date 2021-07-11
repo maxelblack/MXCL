@@ -15,6 +15,8 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation("io.github.vincenzopalazzo:material-ui-swing:1.1.2")
+    implementation(files("./dependency/ResourceTools-0.2.1-build9.jar"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }

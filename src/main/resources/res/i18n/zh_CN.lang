@@ -1,0 +1,7 @@
+language = zh-CN
+mxcl/ui.main.title = MX Craft 启动器
+mxcl/ui.default.dialog-title = 提示
+mxcl/ui.default.dialog-text = 这是一条消息。
+mxcl/ui.main.button.launch = 启动游戏
+mxcl/ui.main.button.menu = 菜单
+mxcl/ui.main.button.download = 下载
