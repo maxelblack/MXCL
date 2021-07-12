@@ -1,6 +1,6 @@
 package ink.maxelbk.mxcl.handler
 
-import ink.maxelbk.mxcl.i18n.i18n
+import ink.maxelbk.mxcl.ui.i18n
 import java.awt.Window
 
 open class DialogHandler {

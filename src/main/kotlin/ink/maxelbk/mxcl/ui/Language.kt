@@ -1,4 +1,4 @@
-package ink.maxelbk.mxcl.i18n
+package ink.maxelbk.mxcl.ui
 
 data class Language(
 	val tag: String,

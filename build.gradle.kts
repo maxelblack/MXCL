@@ -7,7 +7,7 @@ plugins {
 }
 
 group="ink.maxelbk"
-version="DEV-0.0.0"
+version="DEV"
 
 repositories {
     mavenCentral()

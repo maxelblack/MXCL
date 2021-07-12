@@ -1,11 +1,13 @@
 package ink.maxelbk.mxcl.ui
 
-import ink.maxelbk.mxcl.Default
+import ink.maxelbk.mxcl.core.Default
 import ink.maxelbk.mxcl.MXCL_VERSION_NAME
-import ink.maxelbk.mxcl.i18n.i18n
 import ink.maxelbk.mxcl.util.getCentralPoint
 import java.awt.*
+import javax.swing.ImageIcon
 import javax.swing.JFrame
+import javax.swing.JPanel
+import kotlin.math.ceil
 
 object MainFrame : JFrame() {
 	init {
@@ -13,9 +15,9 @@ object MainFrame : JFrame() {
 		bounds = getCentralPoint(840, 480)
 		minimumSize = Dimension(790, 460)
 
-		val container = contentPane
-		container.layout = GridBagLayout()
+		val container = MainPanel
 		container.background = Default.ui.colorBackground
+		contentPane.add(container)
 
 		MainCorePanel.background = Color(0, true)
 		val constraintsCorePanel = GridBagConstraints()
@@ -23,7 +25,7 @@ object MainFrame : JFrame() {
 		constraintsCorePanel.gridx = 0
 		constraintsCorePanel.gridy = 0
 		constraintsCorePanel.weightx = 20.0
-		constraintsCorePanel.weighty = 100.0
+		constraintsCorePanel.weighty = 1.0
 		constraintsCorePanel.fill = GridBagConstraints.BOTH
 		container.add(MainCorePanel, constraintsCorePanel)
 
@@ -32,8 +34,44 @@ object MainFrame : JFrame() {
 		constraintsUserPanel.gridx = 1
 		constraintsUserPanel.gridy = 0
 		constraintsUserPanel.fill = GridBagConstraints.BOTH
-		constraintsUserPanel.weightx = 20.0
+		constraintsUserPanel.weightx = 12.0
 		constraintsUserPanel.anchor = GridBagConstraints.EAST
 		container.add(MainUserPanel, constraintsUserPanel)
+	}
+
+	object MainPanel: JPanel(GridBagLayout()) {
+		override fun paintComponent(g: Graphics?) {
+			super.paintComponent(g)
+			val image = Default.ui.imageBackground
+
+			if (image != null) when(Default.ui.imageBackgroundMode) {
+				Default.UI_BGMODE_SCALE -> {
+					val scaled = image.getScaledInstance(MainPanel.width, MainPanel.height, Image.SCALE_SMOOTH)
+					g?.drawImage(scaled, 0, 0, ImageIcon(scaled).imageObserver)
+				}
+				Default.UI_BGMODE_FILL -> {
+					val imageIcon = ImageIcon(image)
+					var widthOut = false
+
+					var width = width
+					var height = ceil(imageIcon.iconHeight.toDouble() / imageIcon.iconWidth * width).toInt()
+
+					if (height < MainPanel.height) {
+						widthOut = true
+						height = MainPanel.height
+						width = ceil(imageIcon.iconWidth.toDouble() / imageIcon.iconHeight * height).toInt()
+					}
+
+					val scaled = imageIcon.image.getScaledInstance(width, height, Image.SCALE_SMOOTH)
+					if (widthOut) {
+						val dx = (width - MainPanel.width) / 2
+						g?.drawImage(scaled, -dx, 0, ImageIcon(scaled).imageObserver)
+					} else {
+						val dy = (height - MainPanel.height) / 2
+						g?.drawImage(scaled, 0, -dy, ImageIcon(scaled).imageObserver)
+					}
+				}
+			}
+		}
 	}
 }

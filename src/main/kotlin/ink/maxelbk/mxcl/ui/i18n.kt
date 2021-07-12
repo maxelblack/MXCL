@@ -1,22 +1,26 @@
-package ink.maxelbk.mxcl.i18n
+package ink.maxelbk.mxcl.ui
 
+import ink.maxelbk.mxcl.handler.Handlers
 import java.io.Reader
 import java.util.*
 
 private val languageMap = linkedMapOf<String, Language>()
 
-private var defaultTag = Locale.getDefault().toLanguageTag()
-private var fallbackTag = Locale.ENGLISH.toLanguageTag()
+private var defaultTag = Locale.getDefault().toString()
+private var fallbackTag = Locale.ENGLISH.toString()
 
 fun loadFiles(vararg readers: Reader) {
 	for (reader in readers) {
 		val properties = Properties()
 		properties.load(reader)
-		val tag = Locale((properties["language"] ?: continue) as String).toLanguageTag()
+		val tmpTag = (properties["language"] ?: continue) as String
+		val locale = Locale.forLanguageTag(tmpTag)
+		val tag = locale.toString()
 		properties.remove("language")
 		val lang = languageMap[tag] ?: Language(tag, hashMapOf())
 		languageMap[tag] = lang
 		properties.forEach { (k, v) -> lang.i18nMap[k.toString()] = v.toString() }
+		Handlers.log.info("+Language: $tmpTag -> $tag")
 	}
 }
 
@@ -41,9 +45,6 @@ fun getAll(): List<Language> {
 fun i18n(key: String, vararg args: Any): String {
 	var isFallback = false
 
-	val fuckingKotlinA = languageMap
-	val fuckingKotlinB = defaultTag
-	val fuckingKotlinC = fallbackTag
 	val tmp = languageMap[defaultTag]
 	val language = if (tmp == null) {
 		isFallback = true
