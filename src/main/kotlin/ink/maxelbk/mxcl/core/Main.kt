@@ -6,10 +6,10 @@ import ink.maxelbk.mxcl.ui.MainFrame
 import ink.maxelbk.mxcl.ui.i18n
 import ink.maxelbk.mxcl.ui.loadFiles
 import java.awt.Font
-import java.awt.GraphicsConfiguration
 import java.awt.GraphicsEnvironment
 import java.io.File
 import java.io.InputStreamReader
+import java.net.URL
 import java.nio.charset.StandardCharsets
 import java.nio.file.Paths
 import java.util.*
@@ -18,7 +18,6 @@ import javax.swing.JFrame
 import javax.swing.UIManager
 import javax.swing.plaf.FontUIResource
 
-
 object Main {
 	val mainJarPath = this.javaClass.protectionDomain.codeSource.location
 	val mainJarResources = ResourcesPackage(this.javaClass, "res")
@@ -26,6 +25,8 @@ object Main {
 	private lateinit var configuration: Config
 
 	val config get() = configuration
+
+	fun res(name: String): URL? = javaClass.getResource("/res/$name")
 
 	// Main function
 	@JvmStatic
@@ -43,8 +44,7 @@ object Main {
 		Handlers.log.info("Finish loading configuration")
 
 		// 配置外观
-		config.ui.imageBackground = ImageIcon(
-			javaClass.getResource("/res/drawable/pic_background.jpg")).image
+		config.ui.imageBackground = ImageIcon(res("drawable/pic_background.jpg")).image
 		configureSwing()
 
 		//加载插件

@@ -1,6 +1,7 @@
 package ink.maxelbk.mxcl.ui
 
 import ink.maxelbk.mxcl.core.Main
+import ink.maxelbk.mxcl.util.getCentralPoint
 import ink.maxelbk.mxcl.util.scaleIcon
 import java.awt.BorderLayout
 import java.awt.Image
@@ -27,7 +28,10 @@ object MainUserPanel : JPanel(BorderLayout()) {
 		labelUserHeadIcon.alignmentX = Box.CENTER_ALIGNMENT
 		buttonChangeUser.alignmentX = Box.CENTER_ALIGNMENT
 
-		buttonChangeUser.addActionListener { UserDialog.isVisible = true }
+		buttonChangeUser.addActionListener {
+			UserDialog.bounds = getCentralPoint(UserDialog.width, UserDialog.height, MainFrame)
+			UserDialog.isVisible = true
+		}
 
 		mainBox.add(Box.createVerticalStrut(36))
 		mainBox.add(labelUserName)

@@ -1,13 +1,18 @@
 package ink.maxelbk.mxcl.account
 
+import javax.swing.ImageIcon
+
 interface Account {
 	val name: String
-	val displayName: String
-	val avatar: Avatar
+	var displayName: String
+	var avatar: Avatar
 
-	val typeName: String
+	val typeI18nKey: String
+	val typeIcon: ImageIcon
+	val avatarChangeable: Boolean
+
 	fun onAdd(): Boolean
 	fun onDelete(): Boolean
-	fun onLoginIn(): Boolean
-	fun onLoginOut(): Boolean
+	fun onActivate(): Boolean
+	fun onDeactivate(): Boolean
 }

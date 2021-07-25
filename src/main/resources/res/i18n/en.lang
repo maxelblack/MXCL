@@ -15,3 +15,5 @@ mxcl/ui.main.button.change-user = Change User
 
 # UserDialog
 mxcl/ui.user.title = User Manager
+mxcl/ui.user.button.change-avatar = Change avatar
+mxcl/ui.user.button.delete = Delete
