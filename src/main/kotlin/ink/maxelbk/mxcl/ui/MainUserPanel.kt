@@ -1,6 +1,6 @@
 package ink.maxelbk.mxcl.ui
 
-import ink.maxelbk.mxcl.core.Default
+import ink.maxelbk.mxcl.core.Main
 import ink.maxelbk.mxcl.util.scaleIcon
 import java.awt.BorderLayout
 import java.awt.Image
@@ -16,7 +16,7 @@ object MainUserPanel : JPanel(BorderLayout()) {
 		80, Image.SCALE_FAST))
 
 	init {
-		background = Default.ui.colorPanelBackground
+		background = Main.config.ui.colorPanelBackground
 		val mainBox = Box.createVerticalBox()
 		add(mainBox)
 
@@ -26,6 +26,8 @@ object MainUserPanel : JPanel(BorderLayout()) {
 		labelUserAccount.alignmentX = Box.CENTER_ALIGNMENT
 		labelUserHeadIcon.alignmentX = Box.CENTER_ALIGNMENT
 		buttonChangeUser.alignmentX = Box.CENTER_ALIGNMENT
+
+		buttonChangeUser.addActionListener { UserDialog.isVisible = true }
 
 		mainBox.add(Box.createVerticalStrut(36))
 		mainBox.add(labelUserName)

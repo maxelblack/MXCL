@@ -1,6 +1,6 @@
 package ink.maxelbk.mxcl.ui
 
-import ink.maxelbk.mxcl.core.Default
+import ink.maxelbk.mxcl.core.Main
 import ink.maxelbk.mxcl.util.scaleIcon
 import java.awt.*
 import javax.swing.*
@@ -61,7 +61,7 @@ object MainCorePanel : JPanel() {
 	object GameInfoPanel : JPanel() {
 		init {
 			val mainBox = Box.createVerticalBox()
-			background = Default.ui.colorPanelBackground
+			background = Main.config.ui.colorPanelBackground
 			add(mainBox)
 
 			labelVersionName.font = labelVersionName.font.deriveFont(20f)

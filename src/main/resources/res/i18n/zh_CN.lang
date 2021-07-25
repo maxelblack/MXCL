@@ -1,6 +1,9 @@
+# Head
 language = zh-CN
 name = 简体中文
 test = 中
+
+# MainFrame
 mxcl/ui.main.title = MX Craft 启动器
 mxcl/ui.default.dialog-title = 提示
 mxcl/ui.default.dialog-text = 这是一条消息。
@@ -9,3 +12,6 @@ mxcl/ui.main.button.menu = 菜单
 mxcl/ui.main.button.download = 下载
 mxcl/ui.main.button.settings = 设置
 mxcl/ui.main.button.change-user = 切换用户
+
+# UserDialog
+mxcl/ui.user.title = 用户管理

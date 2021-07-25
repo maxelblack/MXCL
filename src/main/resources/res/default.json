@@ -1,0 +1,13 @@
+{
+  "ui":{
+    "classLookAndFeel":"mdlaf.MaterialLookAndFeel",
+    "imageBackgroundMode":0,
+    "colorBackground":{
+      "value":-4915201,
+      "falpha":0.0},
+    "colorPanelBackground":{
+      "value":-1342177281,
+      "falpha":0.0},
+    "showInfoPanel":false
+  }
+}

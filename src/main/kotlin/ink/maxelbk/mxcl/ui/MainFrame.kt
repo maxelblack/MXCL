@@ -1,22 +1,22 @@
 package ink.maxelbk.mxcl.ui
 
-import ink.maxelbk.mxcl.core.Default
+import ink.maxelbk.mxcl.core.ConfigData
 import ink.maxelbk.mxcl.MXCL_VERSION_NAME
+import ink.maxelbk.mxcl.core.Main
 import ink.maxelbk.mxcl.util.getCentralPoint
 import java.awt.*
 import javax.swing.ImageIcon
-import javax.swing.JFrame
 import javax.swing.JPanel
 import kotlin.math.ceil
 
-object MainFrame : JFrame() {
+object MainFrame : MyFrame("mxcl/ui.main.title") {
 	init {
-		title = i18n("mxcl/ui.main.title") + " [PRE VER $MXCL_VERSION_NAME]"
+		title = "$title [PRE VER $MXCL_VERSION_NAME]"
 		bounds = getCentralPoint(840, 480)
 		minimumSize = Dimension(790, 460)
 
 		val container = MainPanel
-		container.background = Default.ui.colorBackground
+		container.background = Main.config.ui.colorBackground
 		contentPane.add(container)
 
 		MainCorePanel.background = Color(0, true)
@@ -42,14 +42,14 @@ object MainFrame : JFrame() {
 	object MainPanel: JPanel(GridBagLayout()) {
 		override fun paintComponent(g: Graphics?) {
 			super.paintComponent(g)
-			val image = Default.ui.imageBackground
+			val image = Main.config.ui.imageBackground
 
-			if (image != null) when(Default.ui.imageBackgroundMode) {
-				Default.UI_BGMODE_SCALE -> {
+			if (image != null) when(Main.config.ui.imageBackgroundMode) {
+				ConfigData.UI_BGMODE_SCALE -> {
 					val scaled = image.getScaledInstance(MainPanel.width, MainPanel.height, Image.SCALE_SMOOTH)
 					g?.drawImage(scaled, 0, 0, ImageIcon(scaled).imageObserver)
 				}
-				Default.UI_BGMODE_FILL -> {
+				ConfigData.UI_BGMODE_FILL -> {
 					val imageIcon = ImageIcon(image)
 					var widthOut = false
 

@@ -20,7 +20,7 @@ fun loadFiles(vararg readers: Reader) {
 		val lang = languageMap[tag] ?: Language(tag, hashMapOf())
 		languageMap[tag] = lang
 		properties.forEach { (k, v) -> lang.i18nMap[k.toString()] = v.toString() }
-		Handlers.log.info("+Language: $tmpTag -> $tag")
+		Handlers.log.debug("+Language: $tmpTag -> $tag")
 	}
 }
 

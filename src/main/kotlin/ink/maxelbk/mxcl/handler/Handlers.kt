@@ -1,6 +1,6 @@
 package ink.maxelbk.mxcl.handler
 
 object Handlers {
-	var dialog: DialogHandler = DialogHandler()
+	var message: MessageHandler = MessageHandler()
 	var log: LogHandler = LogHandler()
 }

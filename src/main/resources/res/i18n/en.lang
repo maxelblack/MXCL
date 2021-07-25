@@ -1,6 +1,9 @@
+# Head
 language = en
 name = English
 test = A
+
+# MainFrame
 mxcl/ui.main.title = MX Craft Launcher
 mxcl/ui.default.dialog-title = Message
 mxcl/ui.default.dialog-text = This is a message.
@@ -9,3 +12,6 @@ mxcl/ui.main.button.menu = Menu
 mxcl/ui.main.button.download = Downloads
 mxcl/ui.main.button.settings = Settings
 mxcl/ui.main.button.change-user = Change User
+
+# UserDialog
+mxcl/ui.user.title = User Manager
